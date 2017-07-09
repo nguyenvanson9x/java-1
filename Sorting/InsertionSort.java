@@ -8,7 +8,19 @@ class InsertionSort {
     }
     
     private static void insertionSort(int a[], int n) {
-        
+        int i;
+        for (i = 1; i < n; i++)
+            if (a[i] < a[i - 1])
+                shiftElement(a, i);
+    }
+    
+    private static void shiftElement(int a[], int i) {
+        int iValue = a[i];
+        while (i > 0 && a[i - 1] > iValue) {
+            a[i] = a[i - 1];
+            i--;
+        }
+        a[i] = iValue;
     }
     
     private static void swap(int a[], int i, int j) {
