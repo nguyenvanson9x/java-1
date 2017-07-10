@@ -4,7 +4,7 @@ public class Runner {
 		s.push(1);
 		s.push(3);
 		s.push(5);
-		//s.reverse();
+		s.reverse();
 		s.print();
 	}
 }

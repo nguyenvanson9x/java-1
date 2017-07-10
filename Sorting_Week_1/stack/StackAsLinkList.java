@@ -45,13 +45,21 @@ public class StackAsLinkList<E> implements Stack<E> {
 
 	@Override
 	public void reverse() {
-		// TODO Auto-generated method stub
-		Node node = head;
-		Node n_new = head;
-		while (node != null) {
-			
-		}
-		head = n_new;
+		head = _reverse(head);
 	}
+	private Node _reverse(Node stack) {
+	    if (stack == null) 
+	    	return null;
+	
+	    if (stack.next == null)
+	    	return stack;
 
+	    Node second_element = stack.next;
+	    stack.next = null;
+	    
+	    Node reverseRest = _reverse(second_element);
+	    second_element.next = stack;
+	
+	    return reverseRest;
+	}
 }

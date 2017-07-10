@@ -4,7 +4,6 @@ import java.util.Random;
 public class Runner {
 	public static void main(String[] args) {
 		comparecard c = new comparecard();
-
 		Card[] deck = new Card[52];
 		int i, j, id = 0;
 		for (i = 0; i < 13; i++)
