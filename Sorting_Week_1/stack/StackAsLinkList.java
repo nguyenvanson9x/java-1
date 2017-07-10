@@ -59,7 +59,7 @@ public class StackAsLinkList<E> implements Stack<E> {
 	    
 	    Node reverseRest = _reverse(second_element);
 	    second_element.next = stack;
-	
+	    
 	    return reverseRest;
 	}
 }
