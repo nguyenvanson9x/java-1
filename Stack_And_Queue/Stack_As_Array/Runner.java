@@ -6,5 +6,7 @@ public class Runner {
         s.push(30);
         s.push(15);
         s.print();
+        System.out.println();
+        System.out.println(s.pop());
     }
 }

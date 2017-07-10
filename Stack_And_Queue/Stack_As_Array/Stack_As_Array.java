@@ -14,8 +14,11 @@ public class Stack_As_Array<E> implements Stack<E> {
     }
     
     public E pop() {
-        top--;
-        return stack[top];
+        if (!isEmpty()) {
+            top--;
+            return stack[top];
+        }
+        return null;
     }
     
     public boolean isEmpty() {
