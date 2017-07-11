@@ -6,14 +6,16 @@ class QueueAsLinkList<E> implements Queue<E> {
     private Node first, last;
     
     public void enqueue(E e) {
-        Node old_last = last;
-        last = new Node();
-        last.element = e;
-        last.next = null;
-        if (isEmpty())
-            first = last;
-        else {
-            old_last.next = last;
+        Node node = new Node();
+        node.element = e;
+        node.next = null;
+        
+        if (last == null) {
+            first = node;
+            last = node;
+        } else {
+            last.next = node;
+            last = node;
         }
     }
     public E dequeue() {

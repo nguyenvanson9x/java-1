@@ -6,7 +6,7 @@ class Runner {
         q.enqueue(20);
         q.enqueue(3);
         q.enqueue(55);
-        
+        q.dequeue();
         q.print();
     }
 }
