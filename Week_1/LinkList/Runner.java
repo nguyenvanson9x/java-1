@@ -31,16 +31,16 @@ public class Runner {
 //		System.out.println();
 //		list.remove(100);
 //		list.print();
-//		SimpleArrayList<Integer> l = new SimpleArrayList<>();
-//		l.add(10);
-//		l.add(20);
-//		l.add(1);
-//		l.add(20);
-//		l.add(5);
-//		l.add(5);
-//		l.add(1);
-//		//l.remove(1);
-//		System.out.println(l.indexOf(5));
+		// SimpleArrayList<Integer> l = new SimpleArrayList<>(2);
+		// l.add(10);
+		// l.add(20);
+		// l.add(1);
+		// l.add(20);
+		// l.add(5);
+		// l.add(5);
+		// l.add(1);
+		// for (Integer x : l)
+		// 	System.out.print(x + " ");
 		
 		Utils utils = new Utils();
 		utils.count("test1.txt");

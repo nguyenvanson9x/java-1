@@ -19,7 +19,7 @@ public class SimpleArrayList<T> implements ListInterface<T> {
 	@Override
 	public void add(T data) {
 		// TODO Auto-generated method stub
-		if (n >= defaultSize)
+		if (n >= array.length)
 			resize(2 * n);
 		array[n] = data;
 		n++;
