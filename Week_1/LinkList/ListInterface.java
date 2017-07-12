@@ -4,6 +4,8 @@ public interface ListInterface<T> extends Iterable<T> {
 	public T get(int i);
 
 	public void set(int i, T data);
+	
+	public int indexOf(T data);
 
 	public void remove(T data);
 

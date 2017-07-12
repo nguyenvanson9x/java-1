@@ -85,7 +85,17 @@ public class SimpleArrayList<T> implements ListInterface<T> {
 		// TODO Auto-generated method stub
 		return n == 0;
 	}
-
+	
+	@Override
+	public int indexOf(T data) {
+		// TODO Auto-generated method stub
+		int index = 0;
+		while (array[index].equals(data) == false) {
+			index++;
+		}
+		return index;
+	}
+	
 	@Override
 	public Iterator<T> iterator() {
 		// TODO Auto-generated method stub
