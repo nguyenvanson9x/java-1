@@ -6,7 +6,7 @@ public class Runner {
         queue.insert(2);
         queue.insert(50);
         queue.insert(20);
-        queue.deleteMax();
+        System.out.println(queue.max());
         queue.print();
     }
 }

@@ -13,7 +13,7 @@ public class UnorderedMaxPriorityQueue<Key extends Comparable<Key>> implements M
     public Key deleteMax() {
         int i, index_max = 0;
         for (i = 0; i < n; i++)
-            if (queue[i].compareTo(queue[index_max]) > 0)
+            if (queue[i].compareTo(queue[index_max]) >= 0)
                 index_max = i;
         swap(index_max, n - 1);
         return queue[--n];
@@ -28,7 +28,11 @@ public class UnorderedMaxPriorityQueue<Key extends Comparable<Key>> implements M
         return n == 0;
     }
     public Key max() {
-        return null;
+        int i, index_max = 0;
+        for (i = 0; i < n; i++)
+            if (queue[i].compareTo(queue[index_max]) >= 0)
+                index_max = i;
+        return queue[index_max];
     }
     public int size() {
         return n;
