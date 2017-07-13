@@ -65,5 +65,8 @@ public class LinkedListStack<T> implements StackInterface<T> {
 			return data;
 		}
 
+		public void remove() {
+			
+		}
 	}
 }

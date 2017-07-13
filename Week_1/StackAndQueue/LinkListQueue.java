@@ -65,5 +65,8 @@ public class LinkListQueue<T> implements QueueInterface<T> {
 			return data;
 		}
 		
+		public void remove() {
+			
+		}
 	}
 }

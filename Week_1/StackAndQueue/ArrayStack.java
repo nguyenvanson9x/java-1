@@ -70,6 +70,9 @@ public class ArrayStack<T> implements StackInterface<T> {
 			return stack[id];
 		}
 		
+		public void remove() {
+			
+		}
 	}
 
 }

@@ -79,6 +79,10 @@ public class ArrayQueue<T> implements QueueInterface<T> {
 			num++;
 			return data;
 		}
+		
+		public void remove() {
+			
+		}
 
 	}
 }
