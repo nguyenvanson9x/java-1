@@ -7,19 +7,22 @@ public class Validity_Formula {
 	}
 
 	public static void main(String[] args) {
-		Validity_Formula v = new Validity_Formula();
-		String input = "3+6-(2*3)";
-
-		char[] data = v.init(input);
-
-		System.out.println(v.validity_formula(data));
-		System.out.println(v.cal(input));
-		
 		InfixToPostfix IPF = new InfixToPostfix();
-		String[] s = IPF.postfix(IPF.processString(input));
+		Validity_Formula v = new Validity_Formula();
+		
+		String input = "(4.2 + 2.2) * 2";
+		
+		System.out.println("Input: " + input);
+		if (v.validity_formula(input)) {
+			String[] s = IPF.postfix(IPF.processString(input));
+			System.out.println("Result: " + IPF.cal(s));
+		}
+		else
+			System.out.println("Biểu thức không hợp lệ");
 	}
 
-	private boolean validity_formula(char[] data) {
+	private boolean validity_formula(String input) {
+		char[] data = init(input);
 		for (Character x : data) {
 			if (x.equals('('))
 				stack.push(x);
@@ -33,26 +36,6 @@ public class Validity_Formula {
 		if (stack.isEmpty())
 			return true;
 		return false;
-	}
-
-	private int cal(String data) {
-	 	data = convert(data);
-		System.out.println(data);
-		return 0;
-	}
-
-	private String convert(String data) {
-		data.replace("  ", " ");
-		data.replace(" ", "");
-		data.replace("(", "( ");
-		data.replace(")", " )");
-		data.replace("+", " + ");
-		data.replace("-", " - ");
-		data.replace("*", " * ");
-		data.replace("/", " / ");
-		data = data.trim();
-		data.replace("  ", " ");
-		return data;
 	}
 
 	private char[] init(String input) {
