@@ -8,12 +8,15 @@ public class Validity_Formula {
 
 	public static void main(String[] args) {
 		Validity_Formula v = new Validity_Formula();
-		String input = "((4 * 2) –    5)    ";
+		String input = "3+6-(2*3)";
 
 		char[] data = v.init(input);
 
 		System.out.println(v.validity_formula(data));
 		System.out.println(v.cal(input));
+		
+		InfixToPostfix IPF = new InfixToPostfix();
+		String[] s = IPF.postfix(IPF.processString(input));
 	}
 
 	private boolean validity_formula(char[] data) {
@@ -33,7 +36,7 @@ public class Validity_Formula {
 	}
 
 	private int cal(String data) {
-		data = convert(data);
+	 	data = convert(data);
 		System.out.println(data);
 		return 0;
 	}

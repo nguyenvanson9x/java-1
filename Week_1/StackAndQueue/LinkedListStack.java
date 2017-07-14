@@ -33,6 +33,13 @@ public class LinkedListStack<T> implements StackInterface<T> {
 		}
 		return null;
 	}
+	
+	@Override
+	public T peek() {
+		if (!isEmpty())
+			return head.element;
+		return null;
+	}
 
 	@Override
 	public boolean isEmpty() {
