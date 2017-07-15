@@ -21,5 +21,7 @@ public class Runner {
         heap.insert("P");
         heap.insert("L");
         heap.insert("E");
+        heap.heap_sort();
+        heap.print();
     }
 }
