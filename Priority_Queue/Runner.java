@@ -36,6 +36,7 @@ public class Runner {
         System.out.println();
         
         System.out.println(q.deleteMax());
+        q.deleteMax();
         q.print();
     }
 }
