@@ -29,9 +29,8 @@ public class BinaryHeapTree<Key extends Comparable<Key>> implements MaxPriorityQ
     }
     
     private void upheap(int k) {
-        while (k > 1) {
-            if (heap[k].compareTo(heap[k / 2]) > 0)
-                swap(k, k / 2);
+        while (k > 1 && heap[k].compareTo(heap[k / 2]) > 0) {
+            swap(k, k / 2);
             k = k / 2;
         }
     }
@@ -43,21 +42,19 @@ public class BinaryHeapTree<Key extends Comparable<Key>> implements MaxPriorityQ
     }
     
     public Key deleteMax() {
+        Key max = null;
         if (!isEmpty()) {
-            Key max = heap[1];
-            swap(1, n);
-            n--;
+            max = heap[1];
+            swap(1, n--);
             downheap(1, n);
-            heap[n + 1] = null;
-            return max;
         }
-        return null;
+        return max;
     }
     
     private void downheap(int k, int n) {
         while (2 * k <= n) {
             int i = 2 * k;
-            if (heap[i].compareTo(heap[i + 1]) < 0)
+            if (i < n && heap[i].compareTo(heap[i + 1]) < 0)
                 i++;
             if (heap[k].compareTo(heap[i]) > 0)
                 break;
@@ -71,8 +68,9 @@ public class BinaryHeapTree<Key extends Comparable<Key>> implements MaxPriorityQ
     }
     
     public Key max() {
+        Key max = heap[1];
         if (!isEmpty())
-            return heap[1];
+            return max;
         return null;
     }
     
@@ -88,6 +86,7 @@ public class BinaryHeapTree<Key extends Comparable<Key>> implements MaxPriorityQ
             downheap(1, k);
         }
     }
+    
     public void print() {
         int i;
         for (i = 1; i <= n; i++)
