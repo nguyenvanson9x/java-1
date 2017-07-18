@@ -30,15 +30,15 @@ public class Utils {
 		int i;
 		for (i = 0; i < n; i++) {
 			shiftElement(a, i);
-			show(a);
+			// show(a);
 		}
 		show(a);
 
 	}
 	private static void shiftElement(int[] a, int i) {
 		int temp = a[i];
-		while (i > 0 && a[i - 1] > a[i]) {
-			a[i - 1] = a[i];
+		while (i > 0 && a[i - 1] > temp) {
+			a[i] = a[i - 1];
 			i--;
 		}
 		a[i] = temp;
