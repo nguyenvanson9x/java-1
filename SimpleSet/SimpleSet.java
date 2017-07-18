@@ -1,15 +1,21 @@
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class SimpleSet<T> implements Iterable<T> {
 	private int n, default_size = 10;
 	private T[] arr;
 
+	private int[] B;
+	private List<SimpleSet<T>> list_sub;
+
+	@SuppressWarnings("unchecked")
 	public SimpleSet() {
-		// TODO Auto-generated constructor stub
 		arr = (T[]) new Object[default_size];
 		n = 0;
 	}
 
+	@SuppressWarnings("unchecked")
 	public SimpleSet(T[] set) {
 		int i, set_size = set.length;
 		arr = (T[]) new Object[set_size];
@@ -27,8 +33,8 @@ public class SimpleSet<T> implements Iterable<T> {
 
 	public void remove(T element) {
 		int i;
-		if (!isEmpty()) {
-			for (i = 0; i < n; i++) {
+		if (!isEmpty())
+			for (i = 0; i < n; i++)
 				if (arr[i].equals(element)) {
 					int j;
 					for (j = i; j < n; j++)
@@ -36,9 +42,6 @@ public class SimpleSet<T> implements Iterable<T> {
 					j--;
 					n--;
 				}
-			}
-		}
-
 	}
 
 	public boolean contains(T element) {
@@ -95,19 +98,49 @@ public class SimpleSet<T> implements Iterable<T> {
 
 	public SimpleSet<T> Tru(SimpleSet<T> set) {
 		SimpleSet<T> temp = new SimpleSet<>();
-		if (!isEmpty()) {
-			if (isSubset(set)) {
+		if (!isEmpty())
+			if (isSubset(set))
 				for (T x : arr)
 					if (!set.contains(x))
 						temp.add(x);
-			}
-		}
 		return temp;
+	}
+
+	public List<SimpleSet<T>> get_all_sub() {
+		list_sub = new ArrayList<>();
+		if (!isEmpty()) {
+			B = new int[n];
+			binary(0);
+		} else {
+			SimpleSet<T> zezo = new SimpleSet<>();
+			list_sub.add(zezo);
+		}
+		return list_sub;
+	}
+
+	private void binary(int index) {
+		int i;
+		for (i = 0; i <= 1; i++) {
+			B[index] = i;
+			if (index == n - 1)
+				put_to_list();
+			else
+				binary(index + 1);
+		}
+	}
+
+	private void put_to_list() {
+		// TODO Auto-generated method stub
+		int i;
+		SimpleSet<T> temp = new SimpleSet<>();
+		for (i = 0; i < n; i++)
+			if (B[i] != 0)
+				temp.add(arr[i]);
+		list_sub.add(temp);
 	}
 
 	@Override
 	public Iterator<T> iterator() {
-		// TODO Auto-generated method stub
 		return new SimpleSetIterator();
 	}
 
@@ -116,18 +149,16 @@ public class SimpleSet<T> implements Iterable<T> {
 
 		@Override
 		public boolean hasNext() {
-			// TODO Auto-generated method stub
 			return index < n;
 		}
 
 		@Override
 		public T next() {
-			// TODO Auto-generated method stub
 			return arr[index++];
 		}
-		
+
 		public void remove() {
-			
+
 		}
 
 	}
