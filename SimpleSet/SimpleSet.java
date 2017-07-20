@@ -20,15 +20,24 @@ public class SimpleSet<T> implements Iterable<T> {
 		int i, set_size = set.length;
 		arr = (T[]) new Object[set_size];
 		for (i = 0; i < set_size; i++)
-			arr[i] = set[i];
-		n = set_size;
+			add(set[i]);
 	}
 
 	public void add(T element) {
+		if (n >= arr.length)
+			resize(n);
 		if (!contains(element)) {
 			arr[n] = element;
 			n++;
 		}
+	}
+
+	private void resize(int n) {
+		int i;
+		T[] temp = (T[]) new Object[2 * n];
+		for (i = 0; i < n; i++)
+			temp[i] = arr[i];
+		arr = temp;
 	}
 
 	public void remove(T element) {
@@ -37,7 +46,7 @@ public class SimpleSet<T> implements Iterable<T> {
 			for (i = 0; i < n; i++)
 				if (arr[i].equals(element)) {
 					int j;
-					for (j = i; j < n; j++)
+					for (j = i; j < n - 1; j++)
 						arr[j] = arr[j + 1];
 					j--;
 					n--;
@@ -61,11 +70,8 @@ public class SimpleSet<T> implements Iterable<T> {
 	}
 
 	public boolean isSubset(SimpleSet<T> set) {
-		if (isEmpty()) {
-			if (!set.isEmpty())
-				return false;
-			return true;
-		}
+		if (size() - set.size() < 0)
+			return false;
 		for (T x : set) {
 			if (!contains(x))
 				return false;
@@ -74,8 +80,9 @@ public class SimpleSet<T> implements Iterable<T> {
 	}
 
 	public boolean isEqual(SimpleSet<T> set) {
-		SimpleSet<T> temp = new SimpleSet<>(arr);
-		return isSubset(set) && set.isSubset(temp);
+		if (set.size() != size())
+			return false;
+		return isSubset(set) && set.isSubset(this);
 	}
 
 	public SimpleSet<T> Giao(SimpleSet<T> set) {
@@ -98,11 +105,9 @@ public class SimpleSet<T> implements Iterable<T> {
 
 	public SimpleSet<T> Tru(SimpleSet<T> set) {
 		SimpleSet<T> temp = new SimpleSet<>();
-		if (!isEmpty())
-			if (isSubset(set))
-				for (T x : arr)
-					if (!set.contains(x))
-						temp.add(x);
+		for (T x : arr)
+			if (!set.contains(x))
+				temp.add(x);
 		return temp;
 	}
 
@@ -130,7 +135,6 @@ public class SimpleSet<T> implements Iterable<T> {
 	}
 
 	private void put_to_list() {
-		// TODO Auto-generated method stub
 		int i;
 		SimpleSet<T> temp = new SimpleSet<>();
 		for (i = 0; i < n; i++)
