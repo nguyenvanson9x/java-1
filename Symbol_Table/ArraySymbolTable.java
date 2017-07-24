@@ -41,7 +41,7 @@ public class ArraySymbolTable<Key extends Comparable<Key>, Value> implements Sym
 
 	}
 
-	private int rank(Key key) {
+	public int rank(Key key) {
 		int u = 0;
 		int v = n - 1;
 		while (u <= v) {
