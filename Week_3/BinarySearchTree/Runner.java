@@ -31,7 +31,6 @@ public class Runner {
 		// show(s.keys_level(1));
 		// show(s.keys_all_level());
 
-		
 		System.out.println("*" + s.count_key_only_one_child());
 		System.out.println("*" + s.count_key_have_two_child());
 		show(s.keys_have_two_child());
@@ -48,6 +47,8 @@ public class Runner {
 		System.out.println("is BST: " + s.is_BST());
 		System.out.println("is blanched BST: " + s.is_blanched_BST());
 		System.out.println("is_completely_balanced_BST: " + s.is_completely_balanced_BST());
+		System.out.println("Sum key less than k: " + s.sum_keys_less_than(5));
+		System.out.println("Count key less than or equal k: " + s.count_key_less_than(10));
 	}
 
 	private static void show(Iterable<Integer> i) {

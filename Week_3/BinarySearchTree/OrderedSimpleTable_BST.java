@@ -638,4 +638,37 @@ public class OrderedSimpleTable_BST<Key extends Comparable<Key>, Value> implemen
 		int c_right = _count_keys(node.right);
 		return 1 + c_left + c_right;
 	}
+
+	// tổng các Key có giá trị Key < K
+	public int sum_keys_less_than(Key k) {
+		return _sum_keys_less_than(root, k);
+	}
+
+	private int _sum_keys_less_than(Node node, Key k) {
+		if (node != null) {
+			int sumL = _sum_keys_less_than(node.left, k);
+			int sumR = _sum_keys_less_than(node.right, k);
+			if (node.key.compareTo(k) < 0)
+				return (Integer) node.key + sumL + sumR;
+			return sumL + sumR;
+		}
+		return 0;
+	}
+
+	// số node có key < K
+	public int count_key_less_than(Key k) {
+		return _count_key_less_than(root, k);
+	}
+
+	private int _count_key_less_than(Node node, Key k) {
+		if (node != null) {
+			int count_left = _count_key_less_than(node.left, k);
+			int count_right = _count_key_less_than(node.right, k);
+			if (node.key.compareTo(k) <= 0)
+				return 1 + count_left + count_right;
+			return count_left + count_right;
+		}
+		return 0;
+	}
+
 }
