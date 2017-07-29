@@ -215,7 +215,23 @@ public class OrderedSimpleTable_BST<Key extends Comparable<Key>, Value> implemen
 
 	@Override
 	public Key select(int k) {
+		Node node = _select(root, k);
+		if (node != null)
+			return node.key;
 		return null;
+	}
+
+	private Node _select(Node node, int k) {
+		if (node != null) {
+			int c = k - rank(node.key);
+			if (c == 0)
+				return node;
+			else if (c > 0)
+				node = _select(node.right, k);
+			else
+				node = _select(node.left, k);
+		}
+		return node;
 	}
 
 	@Override
@@ -246,12 +262,23 @@ public class OrderedSimpleTable_BST<Key extends Comparable<Key>, Value> implemen
 
 	@Override
 	public int size(Key u, Key v) {
+		return _size(root, u, v);
+	}
+
+	private int _size(Node node, Key u, Key v) {
+		if (node != null) {
+			int sizeL = _size(node.left, u, v);
+			int sizeR = _size(node.right, u, v);
+			if (u.compareTo(node.key) <= 0 && node.key.compareTo(v) <= 0)
+				return 1 + sizeL + sizeR;
+			return sizeL + sizeR;
+		}
 		return 0;
 	}
 
 	@Override
 	public Iterable<Key> keys(Key u, Key v) {
-		return null;
+		return keys_between(u, v);
 	}
 
 	// chiều cao của cây

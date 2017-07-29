@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Runner {
 	public static void main(String[] args) {
 		// SimpleBST<Integer> s = new SimpleBST<>();
@@ -19,6 +21,7 @@ public class Runner {
 		s.put(1, 1);
 		s.put(3, 1);
 		// s.deleteMax();
+		s.delete(10);
 		for (Integer x : s.keys())
 			System.out.println(x + "\t" + s.get(x));
 		System.out.println();
@@ -27,8 +30,9 @@ public class Runner {
 		System.out.println(s.floor(11));
 		System.out.println(s.ceiling(11));
 		System.out.println("Depth: " + s.depth());
-		// show(s.keys_between(-1, 10));
-		// show(s.keys_level(1));
+		show(s.keys_between(-1, 10));
+		System.out.println("Count node between: " + s.size(-1, 10));
+		show(s.keys_level(4));
 		// show(s.keys_all_level());
 
 		System.out.println("*" + s.count_key_only_one_child());
@@ -49,6 +53,9 @@ public class Runner {
 		System.out.println("is_completely_balanced_BST: " + s.is_completely_balanced_BST());
 		System.out.println("Sum key less than k: " + s.sum_keys_less_than(5));
 		System.out.println("Count key less than or equal k: " + s.count_key_less_than(10));
+		// get_number("This is a number abc12a3.a456aaa222,666");
+		System.out.println("Rank: " + s.rank(16));
+		System.out.println("Select: " + s.select(4));
 	}
 
 	private static void show(Iterable<Integer> i) {
@@ -58,5 +65,21 @@ public class Runner {
 			System.out.print(x + " ");
 		System.out.println();
 		System.out.println("---------");
+	}
+
+	private static ArrayList<Double> get_number(String str) {
+		// str = "This is a number abc12a3.456aaa222,666"
+		ArrayList<Double> list = new ArrayList<>();
+		str = str.replaceAll("[,]", ".");
+		str = str.replaceAll("[^0-9-,\\.]", "@");
+		String[] items = str.split("@");
+		for (String x : items)
+			try {
+				double result = Double.parseDouble(x);
+				list.add(result);
+			} catch (Exception e) {
+
+			}
+		return list;
 	}
 }
