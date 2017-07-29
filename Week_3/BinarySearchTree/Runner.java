@@ -1,10 +1,8 @@
-import java.util.ArrayList;
-
 public class Runner {
 	public static void main(String[] args) {
 		// SimpleBST<Integer> s = new SimpleBST<>();
 		// SimpleTable_BST<Integer, Integer> s = new SimpleTable_BST<>();
-		OrderedSimpleTable_BST<Integer, Integer> s = new OrderedSimpleTable_BST<>();
+		Exercise_BST<Integer, Integer> s = new Exercise_BST<>();
 		// System.out.println(s.size());
 		// s.insert(1);
 		// s.insert(13);
@@ -30,7 +28,7 @@ public class Runner {
 		System.out.println(s.floor(11));
 		System.out.println(s.ceiling(11));
 		System.out.println("Depth: " + s.depth());
-		show(s.keys_between(-1, 10));
+		show(s.keys(-1, 10));
 		System.out.println("Count node between: " + s.size(-1, 10));
 		show(s.keys_level(4));
 		// show(s.keys_all_level());
@@ -67,7 +65,7 @@ public class Runner {
 		System.out.println("---------");
 	}
 
-	private static ArrayList<Double> get_number(String str) {
+/*	private static ArrayList<Double> get_number(String str) {
 		// str = "This is a number abc12a3.456aaa222,666"
 		ArrayList<Double> list = new ArrayList<>();
 		str = str.replaceAll("[,]", ".");
@@ -81,5 +79,5 @@ public class Runner {
 
 			}
 		return list;
-	}
+	}*/
 }
