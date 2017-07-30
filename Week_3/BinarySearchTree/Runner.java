@@ -14,12 +14,12 @@ public class Runner {
 		s.put(4, 7);
 		s.put(2, 2);
 		s.put(10, 9);
-		s.put(21, 6);
+		s.put(22, 6);
 		s.put(16, 1);
 		s.put(1, 1);
 		s.put(3, 1);
 		// s.deleteMax();
-		s.delete(10);
+		// s.delete(4);
 		for (Integer x : s.keys())
 			System.out.println(x + "\t" + s.get(x));
 		System.out.println();
@@ -31,7 +31,7 @@ public class Runner {
 		show(s.keys(-1, 10));
 		System.out.println("Count node between: " + s.size(-1, 10));
 		show(s.keys_level(4));
-		// show(s.keys_all_level());
+		show(s.keys_all_level());
 
 		System.out.println("*" + s.count_key_only_one_child());
 		System.out.println("*" + s.count_key_have_two_child());
@@ -54,6 +54,7 @@ public class Runner {
 		// get_number("This is a number abc12a3.a456aaa222,666");
 		System.out.println("Rank: " + s.rank(16));
 		System.out.println("Select: " + s.select(4));
+		System.out.println("Key nearest: " + s.key_nearest(-1));
 	}
 
 	private static void show(Iterable<Integer> i) {
@@ -65,19 +66,14 @@ public class Runner {
 		System.out.println("---------");
 	}
 
-/*	private static ArrayList<Double> get_number(String str) {
-		// str = "This is a number abc12a3.456aaa222,666"
-		ArrayList<Double> list = new ArrayList<>();
-		str = str.replaceAll("[,]", ".");
-		str = str.replaceAll("[^0-9-,\\.]", "@");
-		String[] items = str.split("@");
-		for (String x : items)
-			try {
-				double result = Double.parseDouble(x);
-				list.add(result);
-			} catch (Exception e) {
-
-			}
-		return list;
-	}*/
+	/*
+	 * private static ArrayList<Double> get_number(String str) { // str =
+	 * "This is a number abc12a3.456aaa222,666" ArrayList<Double> list = new
+	 * ArrayList<>(); str = str.replaceAll("[,]", "."); str =
+	 * str.replaceAll("[^0-9-,\\.]", "@"); String[] items = str.split("@"); for
+	 * (String x : items) try { double result = Double.parseDouble(x);
+	 * list.add(result); } catch (Exception e) {
+	 * 
+	 * } return list; }
+	 */
 }

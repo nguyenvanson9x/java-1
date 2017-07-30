@@ -90,6 +90,7 @@ public class OrderedSimpleTable_BST<Key extends Comparable<Key>, Value> implemen
 				s.right = Q.left;
 			}
 		}
+		node.count = 1 + size(node.left) + size(node.right);
 		return node;
 	}
 

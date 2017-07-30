@@ -3,6 +3,7 @@ import java.util.List;
 
 /**
  * Bài tập cây nhị phân tìm kiếm
+ * 
  * @author NguyenSon
  * @param <Key>
  * @param <Value>
@@ -408,5 +409,23 @@ public class Exercise_BST<Key extends Comparable<Key>, Value> extends OrderedSim
 			return count_left + count_right;
 		}
 		return 0;
+	}
+
+	// Tìm Key min sao cho |Key - K| min
+	public Key key_nearest(Key key) {
+		Key floor, ceiling;
+		floor = floor(key);
+		ceiling = ceiling(key);
+		if (floor == null && ceiling != null)
+			return ceiling;
+		if (floor != null && ceiling == null)
+			return floor;
+		int k, f, c;
+		k = (Integer) key;
+		f = (Integer) floor;
+		c = (Integer) ceiling;
+		// if (Math.abs(f - k) == Math.abs(c - k))
+		// return f < c ? floor : ceiling;
+		return Math.abs(f - k) <= Math.abs(c - k) ? floor : ceiling;
 	}
 }
