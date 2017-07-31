@@ -35,33 +35,29 @@ public class InfixToPostfix {
 		for (i = 0; i < n; i++) {
 			String element = tokens[i];
 			char c = element.charAt(0);
+
 			if (!isOperator(c))
 				out = out + " " + element;
 			else {
 				if (c == '(')
 					S.push(element);
 				else if (c == ')') {
-					char c1;
-					do {
-						c1 = S.peek().charAt(0);
-						if (c1 != '(')
-							out = out + " " + S.peek();
-						S.pop();
-					} while (c1 != '(');
-				} else {
-					while (!S.isEmpty()
-							&& priority(S.peek().charAt(0)) >= priority(c)) {
-						out = out + " " + S.peek();
-						S.pop();
+					String ele = S.pop();
+					char c1 = ele.charAt(0);
+					while (c1 != '(') {
+						out = out + " " + ele;
+						ele = S.pop();
+						c1 = ele.charAt(0);
 					}
+				} else {
+					while (!S.isEmpty() && priority(S.peek().charAt(0)) >= priority(c))
+						out = out + " " + S.pop();
 					S.push(element);
 				}
 			}
 		}
-		while (!S.isEmpty()) {
-			out = out + " " + S.peek();
-			S.pop();
-		}
+		while (!S.isEmpty())
+			out = out + " " + S.pop();
 		out = out.trim();
 		return out.split(" ");
 	}
@@ -81,16 +77,15 @@ public class InfixToPostfix {
 				if (c == ')')
 					S.push(element);
 				else if (c == '(') {
-					char c1;
-					do {
-						c1 = S.peek().charAt(0);
-						if (c != ')')
-							out = out + " " + S.peek();
-						S.pop();
-					} while (c1 != ')');
+					String ele = S.pop();
+					char c1 = ele.charAt(0);
+					while (c1 != ')') {
+						out = out + " " + ele;
+						ele = S.pop();
+						c1 = ele.charAt(0);
+					}
 				} else {
-					while (!S.isEmpty()
-							&& priority(S.peek().charAt(0)) > priority(c)) {
+					while (!S.isEmpty() && priority(S.peek().charAt(0)) > priority(c)) {
 						out = out + " " + S.peek();
 						S.pop();
 					}
@@ -102,6 +97,7 @@ public class InfixToPostfix {
 			out = out + " " + S.peek();
 			S.pop();
 		}
+		out = out.trim();
 		out = reverse(out);
 		System.out.println(out);
 		return out.split(" ");
@@ -111,7 +107,7 @@ public class InfixToPostfix {
 		int i, n = postfix.length;
 		Stack<String> S = new Stack<>();
 
-		for (i = 1; i < n; i++) {
+		for (i = 0; i < n; i++) {
 			String element = postfix[i];
 			char c = element.charAt(0);
 

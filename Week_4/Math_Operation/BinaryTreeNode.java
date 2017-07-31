@@ -24,14 +24,14 @@ public class BinaryTreeNode {
 		create_tree(postfix);
 	}
 
-	private void create_tree(String[] tokens) {
-		int i, n = tokens.length;
+	private void create_tree(String[] postfix) {
+		int i, n = postfix.length;
 
 		for (i = 0; i < n; i++) {
-			String element = tokens[i];
-			char c = element.charAt(0);
-			Node p = new Node(element);
-			if (!itp.isOperator(c))
+			String ele = postfix[i];
+			char c = ele.charAt(0);
+			Node p = new Node(ele);
+			if (itp.isOperator(c) == false)
 				S.push(p);
 			else {
 				p.right = S.pop();
@@ -52,7 +52,6 @@ public class BinaryTreeNode {
 			return node.key;
 		String left = _cal(node.left);
 		String right = _cal(node.right);
-
 		char c = node.key.charAt(0);
 		num1 = Double.parseDouble(left);
 		num2 = Double.parseDouble(right);
